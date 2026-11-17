@@ -101,20 +101,6 @@ input[type="password"], input[type="search"] {
 	width: 100%;
 }
 
-#access-key {
-	margin-bottom: 4px;
-}
-
-.api-help {
-	color: var(--muted);
-	font-size: 12px;
-	margin: 6px 0 18px;
-}
-
-.api-help a {
-	color: var(--accent);
-}
-
 .search-row {
 	display: flex;
 	gap: 10px;
