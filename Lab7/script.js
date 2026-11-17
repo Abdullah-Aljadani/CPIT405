@@ -1,6 +1,6 @@
 const API_URL = "https://api.unsplash.com/search/photos";
+const ACCESS_KEY = "LKyBQSzX3Fba7X9ceOttBx_kuY18dJn8pItqQKvKMXs";
 const searchForm = document.querySelector("#search-form");
-const accessKeyInput = document.querySelector("#access-key");
 const queryInput = document.querySelector("#query");
 const statusMessage = document.querySelector("#status");
 const resultCount = document.querySelector("#result-count");
@@ -85,11 +85,10 @@ function renderPhotos(data) {
 function searchPhotos(event) {
 	event.preventDefault();
 	const query = queryInput.value.trim();
-	const accessKey = accessKeyInput.value.trim();
-	const hasAccessKey = accessKey.length > 0;
+	const hasAccessKey = ACCESS_KEY && !ACCESS_KEY.startsWith("REPLACE_WITH_");
 	if (!hasAccessKey || !query) {
 		statusMessage.textContent = !hasAccessKey
-			? "Enter your Unsplash Access Key before searching."
+			? "Add your Unsplash Access Key in script.js before searching."
 			: "Please enter a search term.";
 		return;
 	}
@@ -97,10 +96,10 @@ function searchPhotos(event) {
 	const method = selectedMethod();
 	const requestUrl = getRequestUrl(query);
 	const request = method === "xhr"
-		? requestWithXHR(requestUrl, accessKey)
+		? requestWithXHR(requestUrl, ACCESS_KEY)
 		: method === "promise"
-			? requestWithPromises(requestUrl, accessKey)
-			: requestWithAsyncAwait(requestUrl, accessKey);
+			? requestWithPromises(requestUrl, ACCESS_KEY)
+			: requestWithAsyncAwait(requestUrl, ACCESS_KEY);
 
 	const methodName = method === "xhr" ? "XMLHttpRequest" : method === "promise" ? "Fetch Promises" : "Async/Await";
 	statusMessage.textContent = `Searching Unsplash with ${methodName}...`;
