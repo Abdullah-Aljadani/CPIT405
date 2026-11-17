@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CPIT-405 Lab 7 - Unsplash Image Search</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<main class="container">
+		<header>
+			<p class="eyebrow">CPIT-405 / LAB 07</p>
+			<h1>Unsplash Image Search</h1>
+			<p class="subtitle">Search beautiful photos with XHR, Fetch Promises, or Async/Await.</p>
+			<p class="student-info">Name: Abdullah Aljadani | ID: 2342239</p>
+		</header>
+
+		<section class="search-panel" aria-labelledby="search-heading">
+			<h2 id="search-heading">Search photos</h2>
+			<form id="search-form">
+				<label for="access-key">Unsplash Access Key</label>
+				<input id="access-key" name="access-key" type="password"
+					placeholder="Paste your Unsplash Access Key" autocomplete="off" required>
+				<p class="api-help">
+					Create an application in the
+					<a href="https://unsplash.com/developers" target="_blank" rel="noopener noreferrer">Unsplash Developer Dashboard</a>
+					to get an Access Key.
+				</p>
+
+				<label for="query">Search term</label>
+				<div class="search-row">
+					<input id="query" type="search" value="nature"
+						placeholder="Try: mountains, ocean, coffee" required>
+					<button type="submit">Search</button>
+				</div>
+
+				<fieldset>
+					<legend>Request method</legend>
+					<label class="radio-label"><input type="radio" name="request-method" value="xhr"> XMLHttpRequest</label>
+					<label class="radio-label"><input type="radio" name="request-method" value="promise" checked> Fetch with Promises</label>
+					<label class="radio-label"><input type="radio" name="request-method" value="async"> Fetch with Async/Await</label>
+				</fieldset>
+			</form>
+			<p id="status" class="status" role="status" aria-live="polite">Enter your key and search for photos.</p>
+		</section>
+
+		<section class="results-panel" aria-labelledby="results-heading">
+			<div class="results-heading">
+				<h2 id="results-heading">Results</h2>
+				<p id="result-count"></p>
+			</div>
+			<div id="photo-grid" class="photo-grid"></div>
+			<p id="empty-message" class="empty-message">Your photos will appear here.</p>
+		</section>
+	</main>
+	<script src="script.js?v=2"></script>
+</body>
+</html>
